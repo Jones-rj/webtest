@@ -1,6 +1,6 @@
-require('dotenv').config(); // Load .env file
+require('dotenv').config();
 const express = require('express');
-const mysql = require('mysql2'); 
+const mysql = require('mysql2');
 const cors = require('cors');
 const path = require('path');
 
@@ -8,15 +8,14 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
-// ✅ Serve static files
+// ✅ Serve static files from project folder
 app.use(express.static(__dirname));
 
-// ✅ Serve web.html as the home page
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'web.html'));
 });
 
-// ✅ Database Connection (Now using `.env`)
+// ✅ Database Connection
 const db = mysql.createConnection({
     host: process.env.DB_HOST,
     user: process.env.DB_USER,
@@ -27,12 +26,12 @@ const db = mysql.createConnection({
 db.connect(err => {
     if (err) {
         console.error("❌ Database connection failed:", err);
-    } else {
-        console.log("✅ Connected to MySQL database");
+        return;
     }
+    console.log("✅ Connected to MySQL database");
 });
 
-// ✅ Save Score Endpoint
+// ✅ Save Score
 app.post('/save-score', (req, res) => {
     const { username, score } = req.body;
     if (!username || score === undefined) {
@@ -51,6 +50,9 @@ app.get('/leaderboard', (req, res) => {
         res.json(results);
     });
 });
+
+
+
 
 // ✅ Like Button Functionality
 app.get('/get-likes', (req, res) => {
