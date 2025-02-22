@@ -1,37 +1,38 @@
+require('dotenv').config(); // Load .env file
 const express = require('express');
 const mysql = require('mysql2'); 
 const cors = require('cors');
-const path = require('path');  
+const path = require('path');
 
 const app = express();
 app.use(express.json());
 app.use(cors());
 
-// ✅ Serve static files from the default project folder
+// ✅ Serve static files
 app.use(express.static(__dirname));
 
-// ✅ Serve index.html for the root route
+// ✅ Serve web.html as the home page
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'web.html')); // ✅ Serve index.html from project root
+    res.sendFile(path.join(__dirname, 'web.html'));
 });
 
-// ✅ Database Connection
+// ✅ Database Connection (Now using `.env`)
 const db = mysql.createConnection({
-    host: 'sql12.freesqldatabase.com',
-    user: 'sql12763765',
-    password: '@LITTLEflock-123',
-    database: 'sql12763765'
+    host: process.env.DB_HOST,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_NAME
 });
 
 db.connect(err => {
     if (err) {
         console.error("❌ Database connection failed:", err);
-        return;
+    } else {
+        console.log("✅ Connected to MySQL database");
     }
-    console.log("✅ Connected to MySQL database");
 });
 
-// ✅ Save Score
+// ✅ Save Score Endpoint
 app.post('/save-score', (req, res) => {
     const { username, score } = req.body;
     if (!username || score === undefined) {
@@ -51,32 +52,10 @@ app.get('/leaderboard', (req, res) => {
     });
 });
 
-// ✅ Start Server
-const PORT = process.env.PORT || 10000;
-app.listen(PORT, '0.0.0.0', () => {
-    console.log(`✅ Server running on port ${PORT}`);
-});
-
-
-
-
-//like button functions
-
-const express = require('express');
-const cors = require('cors');
-const bodyParser = require('body-parser');
-const db = require('./db');
-
-const app = express();
-app.use(cors());
-app.use(bodyParser.json());
-
-// Get today's Amen count
+// ✅ Like Button Functionality
 app.get('/get-likes', (req, res) => {
     const today = new Date().toISOString().split('T')[0];
-    const query = 'SELECT count FROM likes WHERE date = ?';
-
-    db.query(query, [today], (err, results) => {
+    db.query('SELECT count FROM likes WHERE date = ?', [today], (err, results) => {
         if (err) {
             return res.status(500).json({ error: err.message });
         }
@@ -84,11 +63,11 @@ app.get('/get-likes', (req, res) => {
     });
 });
 
-// Increment Amen count
+// ✅ Increment Amen Count
 app.post('/like', (req, res) => {
     const today = new Date().toISOString().split('T')[0];
-
-    db.query('INSERT INTO likes (date, count) VALUES (?, 1) ON DUPLICATE KEY UPDATE count = count + 1', [today], (err, result) => {
+    db.query('INSERT INTO likes (date, count) VALUES (?, 1) ON DUPLICATE KEY UPDATE count = count + 1', 
+    [today], (err) => {
         if (err) {
             return res.status(500).json({ error: err.message });
         }
@@ -96,5 +75,8 @@ app.post('/like', (req, res) => {
     });
 });
 
-app.listen(3000, () => console.log('Server running on port 3000'));
-
+// ✅ Start Server
+const PORT = process.env.PORT || 10000;
+app.listen(PORT, '0.0.0.0', () => {
+    console.log(`✅ Server running on port ${PORT}`);
+});
