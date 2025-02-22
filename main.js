@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
-    const API_URL = 'https://your-real-api-url.com'; // Update with actual deployed URL
+    const API_URL = 'https://webtest-abn1.onrender.com'; // Update with actual deployed URL
 
     // ✅ Update Current Date
     const currentDateElements = document.querySelectorAll('#current-date');
