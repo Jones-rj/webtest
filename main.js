@@ -31,19 +31,7 @@ document.addEventListener('DOMContentLoaded', function() {
     displayVerse(englishVerseDiv, englishVerses);
 
     // ✅ Copy Button Functionality
-    function setupCopyButton(buttonId, verseDiv) {
-        document.getElementById(buttonId).addEventListener('click', function() {
-            navigator.clipboard.writeText(verseDiv.textContent)
-                .then(() => alert('Verse copied to clipboard!'))
-                .catch(err => console.error('Could not copy verse:', err));
-        });
-    }
-
-    setupCopyButton('copy-button', tamilVerseDiv);
-    setupCopyButton('copy-button1', englishVerseDiv);
-
-    // ✅ Amen Button Functionality
-    function loadAmenCount(buttonId, counterId, endpoint) {
+  function loadAmenCount(buttonId, counterId, endpoint) {
         fetch(`${API_URL}/${endpoint}`)
             .then(response => response.json())
             .then(data => {
@@ -68,9 +56,19 @@ document.addEventListener('DOMContentLoaded', function() {
     // ✅ Set up English Amen Button
     loadAmenCount('like-btn1', 'like-counter1', 'get-likes');
     setupLikeButton('like-btn1', 'like-counter1', 'like');
-});
 
-    
+    // ✅ Copy Button Functionality
+    function setupCopyButton(buttonId, verseDiv) {
+        document.getElementById(buttonId).addEventListener('click', function() {
+            navigator.clipboard.writeText(verseDiv.textContent)
+                .then(() => alert('Verse copied to clipboard!'))
+                .catch(err => console.error('Could not copy verse:', err));
+        });
+    }
+
+    setupCopyButton('copy-button', document.getElementById('verse-text'));
+    setupCopyButton('copy-button1', document.getElementById('verse-text-eng'));
+});
 
   /*  shareButton1.addEventListener('click', function() {
         // Basic share functionality (more complex implementations may be needed)
