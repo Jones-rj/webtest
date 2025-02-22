@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Little Flock Prayer Fellowship</title>
+    <link rel="stylesheet" href="main.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+      
+    </style>
+
+</head>
+<body style="background: #ffe4e1;;">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  <div class="lfpf">
+    <a href="web.html"><h1 class="mt-2">LITTLE FLOCK PRAYER FELLOWSHIP</h1></a>
+</div>
+
+<nav class="topnav">
+    <ul class="list-inline">
+        <li class="list-inline-item"><a href="#daily-verse">Today Verse</a></li>
+        <li class="list-inline-item"><a href="index.html">Bible Verse Game</a></li>
+        <li class="list-inline-item"><a href="#prayer-request">Prayer Request</a></li>
+        <li class="list-inline-item"><a href="#about">About Us</a></li>
+    </ul>
+</nav>
+<!--tamil verse--->
+    <section id="daily-verse" >
+        <h2>இன்றைய வேத வசனம்</h2>
+        <h2> <p id="current-date"><span id="date"></span></p></h2>
+        <hr>
+        <div id="verse-text">
+            <!--- .tamil and english Verse will be displayed here -->
+        </div>
+        <button id="copy-button">Copy Verse</button>
+       <!-- <button id="share-button">Share Verse</button> -->
+        <p id="verse-text"></p>
+  <!-- Like button and counter -->
+  <div class="like-btn-container">
+    <button id="like-btn" class="like-btn">ஆமென்</button>
+    <span id="like-counter" class="like-counter">0 ஆமென்</span>
+  </div>
+</div>
+    </section>
+<!--english verse-->
+    <section id="daily-verse-eng">
+        <h2>Verse of the Day</h2>
+        <h2> <p id="current-date"><span id="date"></span></p></h2>
+       <hr>
+        <div id="verse-text-eng">
+            <!-- Verse will be displayed here -->
+        </div>
+        <button id="copy-button1">Copy Verse</button>
+        <!---<button id="share-button1">Share Verse</button>-->
+        <p id="verse-text-eng"></p>
+  <!-- Like button and counter -->
+  <div class="like-btn-container1">
+    <button id="like-btn1" class="like-btn1">Amen</button>
+    <span id="like-counter1" class="like-counter1">0 Amen</span>
+  </div>
+</div>
+    </section>
+
+    <section id="prayer-request">
+        <h2>Prayer Request</h2>
+        <hr>
+        <form id="prayer-form" class="gform pure-form pure-form-stacked" method="POST" data-email="littleflockprayerfellowship.web@gmail.com"
+        action="https://script.google.com/macros/s/AKfycbx3QUhnUxzC_rkt6E8L_Dh9-RPe0iN9Zp0wRa9pUZQqMY-N6l5lW2gVXnkNXEBsqSep/exec">
+            <label for="name">Name (Required):</label>
+            <input type="text" id="name" name="name" required><br><br>
+
+            <label for="father-name">Father's Name / Mother's Name (Required):</label>
+            <input type="text" id="father name" name="father name" required><br><br>
+
+
+            <label for="address">Your Current Address:</label>
+            <textarea id="address" name="current address"></textarea><br><br>
+
+            <label for="mobile">Mobile Number (Required):</label>
+            <input type="tel" id="mobile" name="margin-left number" required><br><br>
+
+            <label for="email">Email ID: (Required)</label>
+            <input type="email" id="email" name="email id"><br><br>
+
+            
+
+            <label for="prayer-request">Prayer Request (Required): <br> பயப்படாதே, உன் வேண்டுதல் கேட்கப்பட்டது. - லூக்கா 1:13</label>
+            <textarea id="prayer-request" name="message" required></textarea><br><br>
+
+            <button style="float: right;width: 100px;height: 40px;font-size: 1.1em;margin-right: 30px; padding: auto;">Send</button><br>
+       
+            <!-- Thankyou_message --><br>
+    <div class="thankyou_message" style="display:none; background: #ffe4e1; padding: 8px;margin-top: 5px; margin-bottom: 10px; border: 1px solid #41051a; border-radius: 4px;   background-color: #f3dfe9;  box-sizing: border-box;text-align: center;"> <br><br>
+    
+        <h1 style="font-family: montserrat;" >Don't Worry! <br>God Always With You & God Bless You..</h1>
+    
+      </div>
+
+
+        </form>
+    </section>
+    <!--border-radius: 20px; 8px solid #f8bbd0;border-radius: 100px;width: 400px; padding: auto; "width: 100%-->
+
+    <section id="about" style="font-family: open sans;">
+        <h2>About Us</h2>
+        <hr>
+        <p>Pr. C.MATTHEW., <br>Little Flock Prayer Fellowship,<br> Karikkulam, Kumbakonam, Thanjavur(Dt) - 612103, <br> Cell: 94434 84925 </p>
+    </section>
+
+
+    <footer class="footer-copy">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-md-12">
+              <p>2025 &copy; Little FLock Prayer Fellowship. Website Designed by <a href="#about" target="_blank" rel="dofollow">Little Flock Media Team.</a></p>
+            </div>
+          </div>
+        </div>
+      </footer>
+
+    <!--html-end-->
+
+    <script src="main.js"></script>
+
+    <script data-cfasync="false" type="text/javascript">
+    
+        (function() {
+       function validEmail(email) {
+         var re = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
+         return re.test(email);
+       }
+     
+       function validateHuman(honeypot) {
+         if (honeypot) {
+           console.log("Robot Detected!");
+           return true;
+         } else {
+           console.log("Welcome Human!");
+         }
+       }
+       function getFormData(form) {
+         var elements = form.elements;
+     
+         var fields = Object.keys(elements).filter(function(k) {
+               return (elements[k].name !== "honeypot");
+         }).map(function(k) {
+           if(elements[k].name !== undefined) {
+             return elements[k].name;
+           }else if(elements[k].length > 0){
+             return elements[k].item(0).name;
+           }
+         }).filter(function(item, pos, self) {
+           return self.indexOf(item) == pos && item;
+         });
+     
+         var formData = {};
+         fields.forEach(function(name){
+           var element = elements[name];
+           formData[name] = element.value;
+           if (element.length) {
+             var data = [];
+             for (var i = 0; i < element.length; i++) {
+               var item = element.item(i);
+               if (item.checked || item.selected) {
+                 data.push(item.value);
+               }
+             }
+             formData[name] = data.join(', ');
+           }
+         });
+     
+         // add form-specific values into the data
+         formData.formDataNameOrder = JSON.stringify(fields);
+         formData.formGoogleSheetName = form.dataset.sheet || "Sheet1"; // default sheet name
+         formData.formGoogleSendEmail = form.dataset.email || ""; // no email by default
+     
+         console.log(formData);
+         return formData;
+       }
+     
+       function handleFormSubmit(event) {  
+         event.preventDefault();           
+         var form = event.target;
+         var data = getFormData(form);         
+         if( data.email && !validEmail(data.email) ) {   
+           var invalidEmail = form.querySelector(".email-invalid");
+           if (invalidEmail) {
+             invalidEmail.style.display = "block";
+             return false;
+           }
+         } else {
+           disableAllButtons(form);
+           var url = form.action;
+           var xhr = new XMLHttpRequest();
+           xhr.open('POST', url);
+           xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+           xhr.onreadystatechange = function() {
+               console.log(xhr.status, xhr.statusText);
+               console.log(xhr.responseText);
+               var formElements = form.querySelector(".form-elements")
+               if (formElements) {
+                 formElements.style.display = "none"; // hide form
+               }
+               var thankYouMessage = form.querySelector(".thankyou_message");
+               if (thankYouMessage) {
+                 thankYouMessage.style.display = "block";
+               }
+               return;
+           };
+           var encoded = Object.keys(data).map(function(k) {
+               return encodeURIComponent(k) + "=" + encodeURIComponent(data[k]);
+           }).join('&');
+           xhr.send(encoded);
+         }
+       }
+       
+       function loaded() {
+         console.log("Contact form submission handler loaded successfully.");
+         var forms = document.querySelectorAll("form.gform");
+         for (var i = 0; i < forms.length; i++) {
+           forms[i].addEventListener("submit", handleFormSubmit, false);
+         }
+       };
+       document.addEventListener("DOMContentLoaded", loaded, false);
+     
+       function disableAllButtons(form) {
+         var buttons = form.querySelectorAll("button");
+         for (var i = 0; i < buttons.length; i++) {
+           buttons[i].disabled = true;
+         }
+       }
+     })();
+     
+     
+       </script>
+
+</body>
+</html>

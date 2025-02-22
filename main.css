@@ -1,0 +1,172 @@
+body {
+    font-family: Arial, sans-serif;
+    background: #992215; /* Light pink background */
+    margin: 0;
+    padding: 0;
+}
+
+.lfpf a{
+  color: #880e4f;
+  text-align: center;
+  text-decoration: none;
+  font-family:merriweather;
+}
+.topnav{
+   background-color: #880e4f;
+   text-align: center;
+}
+.topnav a {
+   color: rgb(245, 230, 212);
+   text-decoration:;
+   font-family: 'playfair display';
+   padding: 14px, 16x;
+   text-align: center;
+}
+.topnav a:hover {
+   color: rgb(253, 255, 109);
+}
+
+/*
+nav {
+    background-color: #f8bbd0; /* Slightly darker pink for the navigation bar 
+    padding: 10px 0;
+    text-align: center;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 20px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #880e4f; /* Darker pink for links 
+    font-weight: bold;
+}*/
+
+section {
+    padding: 20px;
+    margin: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px #880e4f;
+}
+
+#daily-verse {
+    text-align: center;
+}
+#daily-verse-eng {
+    text-align: center;
+}
+
+#verse-text {
+    font-size: 1.2em;
+    margin-bottom: 20px;
+}
+#verse-text-eng {
+    font-size: 1.2em;
+    margin-bottom: 20px;
+}
+button {
+    background-color: #e91e63; /* Pink button color */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #c2185b; /* Darker pink on hover */
+}
+
+/* Paragraph container styles */
+.paragraph-container {
+    width: 80%;
+    margin: 40px auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Like button and counter styles */
+  .like-btn-container {
+    margin-top: 20px;
+  }
+  
+  .like-btn {
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  .like-btn:hover {
+    background-color: #666;
+  }
+  
+  .like-counter {
+    font-size: 16px;
+    color: #333;
+    margin-left: 10px;
+  }
+/* Paragraph container styles */
+.paragraph-container {
+    width: 80%;
+    margin: 40px auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Like button and counter styles */
+  .like-btn-container1 {
+    margin-top: 20px;
+  }
+  
+  .like-btn1 {
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  .like-btn1:hover {
+    background-color: #666;
+  }
+  
+  .like-counter1 {
+    font-size: 16px;
+    color: #333;
+    margin-left: 10px;
+  }
+
+
+#prayer-request label {
+    display: block;
+    margin-top: 10px;
+}
+
+#prayer-request input[type="text"],
+#prayer-request input[type="tel"],
+#prayer-request input[type="email"],
+#prayer-request textarea {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
