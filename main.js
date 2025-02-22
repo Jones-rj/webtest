@@ -1,126 +1,75 @@
-
-// Get the current date elements
-const currentDateElements = document.querySelectorAll('#current-date');
-
-// Get the current date
-const currentDate = new Date();
-
-// Format the current date
-const formattedDate = currentDate.toLocaleDateString();
-
-// Update the current date elements with the formatted date
-currentDateElements.forEach((element) => {
-  element.querySelector('#date').textContent = formattedDate;
-});
-
-//date script end--------------------------------------
-
 document.addEventListener('DOMContentLoaded', function() {
-    // Daily Verse Logic (example)
-    const verses = [
-        "யாக்கோபின் தேவனைத் தன் துணையாகக் கொண்டிருந்து, தன் தேவனாகிய கர்த்தர்மேல் நம்பிக்கையை வைக்கிறவன் பாக்கியவான். அவர் வானத்தையும் பூமியையும் சமுத்திரத்தையும் அவைகளிலுள்ள யாவையும் உண்டாக்கினவர்; அவர் என்றென்றைக்கும் உண்மையைக் காக்கிறவர். - சங்கீதம் 146 : 5 - 6"
-       // "Verse 3: A third example verse."
-    ];
-    const verseTextDiv = document.getElementById('verse-text');
-    const copyButton = document.getElementById('copy-button');
-    const shareButton = document.getElementById('share-button');
+    const API_URL = 'https://your-real-api-url.com'; // Update with actual deployed URL
 
-    function displayVerse() {
+    // ✅ Update Current Date
+    const currentDateElements = document.querySelectorAll('#current-date');
+    const currentDate = new Date();
+    const formattedDate = currentDate.toLocaleDateString();
+    currentDateElements.forEach((element) => {
+        element.querySelector('#date').textContent = formattedDate;
+    });
+
+    // ✅ Tamil and English Verses
+    const tamilVerses = [
+        "யாக்கோபின் தேவனைத் தன் துணையாகக் கொண்டிருந்து, தன் தேவனாகிய கர்த்தர்மேல் நம்பிக்கையை வைக்கிறவன் பாக்கியவான். - சங்கீதம் 146:5",
+        "கர்த்தர் நமக்கு அருளின கருணை புதியதாய் இருக்கிறது. - புலம்பல் 3:23"
+    ];
+
+    const englishVerses = [
+        "Blessed is he whose help is the God of Jacob, whose hope is in the Lord his God. - Psalm 146:5",
+        "The steadfast love of the Lord never ceases; his mercies never come to an end. - Lamentations 3:23"
+    ];
+
+    function displayVerse(verseTextDiv, verses) {
         const randomIndex = Math.floor(Math.random() * verses.length);
         verseTextDiv.textContent = verses[randomIndex];
     }
 
-    displayVerse(); // Display a verse on page load
+    const tamilVerseDiv = document.getElementById('verse-text');
+    const englishVerseDiv = document.getElementById('verse-text-eng');
+    displayVerse(tamilVerseDiv, tamilVerses);
+    displayVerse(englishVerseDiv, englishVerses);
 
-    copyButton.addEventListener('click', function() {
-        navigator.clipboard.writeText(verseTextDiv.textContent)
-            .then(() => alert('Verse copied to clipboard!'))
-            .catch(err => console.error('Could not copy verse: ', err));
-    });
-
-        // Get the like button and counter elements
-        const likeButton = document.getElementById('like-btn');
-        const likeCounter = document.getElementById('like-counter');
-        
-        const API_URL = 'https://your-render-api-url.com';
-        
-        // Load current Amen count
-        function loadAmenCount() {
-            fetch(`${API_URL}/get-likes`)
-                .then(response => response.json())
-                .then(data => {
-                    likeCounter.innerText = `${data.count} ஆமென்`;
-                })
-                .catch(error => console.error('Error:', error));
-        }
-        
-        // Handle Amen button click
-        likeButton.addEventListener('click', () => {
-            fetch(`${API_URL}/like`, { method: 'POST' })
-                .then(response => response.json())
-                .then(() => loadAmenCount())
-                .catch(error => console.error('Error:', error));
+    // ✅ Copy Button Functionality
+    function setupCopyButton(buttonId, verseDiv) {
+        document.getElementById(buttonId).addEventListener('click', function() {
+            navigator.clipboard.writeText(verseDiv.textContent)
+                .then(() => alert('Verse copied to clipboard!'))
+                .catch(err => console.error('Could not copy verse:', err));
         });
-        
-        // Load on page start
-        loadAmenCount();
-        
-   /* shareButton.addEventListener('click', function() {
-        // Basic share functionality (more complex implementations may be needed)
-        alert('மன்னிக்கவும்!.. வசனம் பகிர்வு செய்வது தற்போது உபயோகத்தில் இல்லை. Copy Verse என்பதை உபயோகிக்கவும்.');
-    });*/
-    
-
-    //english verse
-    // Daily Verse Logic (example)
-    const verses1 = [
-        "Blessed are those whose help is the God of Jacob, whose hope is in the LORD their God. He is the Maker of heaven and earth, the sea, and everything in them— he remains faithful forever. - Psalms 146 : 5 - 6",
-        //"Verse 2: Another example verse.",
-       // "Verse 3: A third example verse."
-    ];
-    const verseTextDiv1 = document.getElementById('verse-text-eng');
-    const copyButton1 = document.getElementById('copy-button1');
-    const shareButton1 = document.getElementById('share-button1');
-
-    function displayVerse1() {
-        const randomIndex = Math.floor(Math.random() * verses1.length);
-        verseTextDiv1.textContent = verses1[randomIndex];
     }
 
-    displayVerse1(); // Display a verse on page load
+    setupCopyButton('copy-button', tamilVerseDiv);
+    setupCopyButton('copy-button1', englishVerseDiv);
 
-    copyButton1.addEventListener('click', function() {
-        navigator.clipboard.writeText(verseTextDiv1.textContent)
-            .then(() => alert('Verse copied to clipboard!'))
-            .catch(err => console.error('Could not copy verse: ', err));
-    });
-
-    
-    const likeButton = document.getElementById('like-btn1');
-    const likeCounter = document.getElementById('like-counter1');
-    
-    const API_URL = 'https://your-render-api-url.com';
-    
-    // Load current Amen count
-    function loadAmenCount() {
-        fetch(`${API_URL}/get-likes`)
+    // ✅ Amen Button Functionality
+    function loadAmenCount(buttonId, counterId, endpoint) {
+        fetch(`${API_URL}/${endpoint}`)
             .then(response => response.json())
             .then(data => {
-                likeCounter.innerText = `${data.count} ஆமென்`;
+                document.getElementById(counterId).innerText = `${data.count} ஆமென்`;
             })
             .catch(error => console.error('Error:', error));
     }
-    
-    // Handle Amen button click
-    likeButton.addEventListener('click', () => {
-        fetch(`${API_URL}/like`, { method: 'POST' })
-            .then(response => response.json())
-            .then(() => loadAmenCount())
-            .catch(error => console.error('Error:', error));
-    });
-    
-    // Load on page start
-    loadAmenCount();
+
+    function setupLikeButton(buttonId, counterId, endpoint) {
+        document.getElementById(buttonId).addEventListener('click', () => {
+            fetch(`${API_URL}/${endpoint}`, { method: 'POST' })
+                .then(response => response.json())
+                .then(() => loadAmenCount(buttonId, counterId, 'get-likes'))
+                .catch(error => console.error('Error:', error));
+        });
+    }
+
+    // ✅ Set up Tamil Amen Button
+    loadAmenCount('like-btn', 'like-counter', 'get-likes');
+    setupLikeButton('like-btn', 'like-counter', 'like');
+
+    // ✅ Set up English Amen Button
+    loadAmenCount('like-btn1', 'like-counter1', 'get-likes');
+    setupLikeButton('like-btn1', 'like-counter1', 'like');
+});
+
     
 
   /*  shareButton1.addEventListener('click', function() {
